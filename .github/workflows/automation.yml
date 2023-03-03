@@ -1,23 +1,8 @@
-name: New Repository Setup
-
-on:
-  repository_dispatch:
-    types: [created]
-    
+name: hello-world
+on: push
 jobs:
-  create-branch:
+  my-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: peter-evans/repository-dispatch@v2
-
-      - name: Create branch
-        run: |
-          # Set the branch name
-          BRANCH_NAME=bussiness-analytics
-          
-          # Create a new branch with the specified name
-          git checkout -b $BRANCH_NAME
-          mkdir folder_one
-          mkdir folder_two
-          git push -u origin $BRANCH_NAME
+      - name: my-step
+        run: echo "Hello World!"
