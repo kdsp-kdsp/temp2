@@ -1,0 +1,23 @@
+name: New Repository Setup
+
+on:
+  repository_dispatch:
+    types: [created]
+    
+jobs:
+  create-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Create branch
+        run: |
+          # Set the branch name
+          BRANCH_NAME=bussiness-analytics
+          
+          # Create a new branch with the specified name
+          git checkout -b $BRANCH_NAME
+          mkdir folder_one
+          mkdir folder_two
+          git push -u origin $BRANCH_NAME
